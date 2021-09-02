@@ -4,40 +4,40 @@
 document.getElementById("search-button").addEventListener("click", ()=> {
   const searchField = document.getElementById("search-field");
   const searchedKey = searchField.value;
-  const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchedKey}`;
+  const url = `https://openlibrary.org/search.json?q=${searchedKey}`;
   fetch(url)
   .then(res => res.json())
-  .then(data => displayMeal(data.meals));
+  .then(data => displayBooks(data.docs));
   // console.log(searchedKey);
   searchField.value = "";
 })
 const loadMeals = () => {
-  fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
+  fetch("https://openlibrary.org/search.json?q=")
   .then(res => res.json())
-  .then(data => displayMeal(data.meals));
+  .then(data => displayBooks(data.docs));
 }
 loadMeals();
 
-const displayMeal = meal => {
-const displayMealDiv = document.getElementById("display-meals");
-displayMealDiv.textContent = "";
+const displayBooks = meal => {
+const displayBooksDiv = document.getElementById("display-meals");
+displayBooksDiv.textContent = "";
   meal.forEach(aMeal => {
     const newCol = document.createElement("div");
   newCol.classList.add("col");
   newCol.innerHTML = `
     <div class="card h-100">
-      <img src="${aMeal.strMealThumb}" class="card-img-top" alt="meals">
+      <img src="${aMeal.cover_i}" class="card-img-top" alt="books">
       <div class="card-body">
-        <p class='fw-bold mb-2'>${aMeal.strCategory}</p>
-        <h5 class="card-title">${aMeal.strMeal}</h5>
-        <p class="card-text">${aMeal.strInstructions.substring(0, 120)}</p>
+        <p class='fw-bold mb-2'>${aMeal.author_name}</p>
+        <h5 class="card-title">${aMeal.title}</h5>
+        
       </div>
       <div class="card-footer bg-transparent border-0">
         <button class="btn btn-danger rounded-0 shadow-none px-4" onclick="singleMeal('${aMeal.idMeal}')">More Details</button>
       </div>
     </div>
   `;
-  displayMealDiv.appendChild(newCol);
+  displayBooksDiv.appendChild(newCol);
   });
   // console.log(meal);
 }
@@ -66,12 +66,12 @@ const singleMeal = async meal => {
     <p class="meal-description">${aMeal.strInstructions}</p>
   `;
 
-  // console.log(data.meals[0])
+  // console.log(data.docs[0])
 }
 
-window.onload = () => {
-  setTimeout(endLoad, 2500);
-}
-const endLoad = () => {
-  document.getElementById("loader").style.display="none";
-}
+// window.onload = () => {
+//   setTimeout(endLoad, 2500);
+// }
+// const endLoad = () => {
+//   document.getElementById("loader").style.display="none";
+// }
