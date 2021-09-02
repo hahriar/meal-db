@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meal DB | API Practice</title>
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+  <!-- css -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <main>
+    <!-- search form -->
+    <section class="py-4">
+      <article class="container">
+        <h3 class="mb-3 text-center">Search Your faviorite Meals:</h3>
+        <div class="input-group mb-3 w-50 mx-auto">
+          <input type="text" id="search-field" class="form-control shadow-none rounded-0" placeholder="What are you Search for..." aria-describedby="search-button">
+          <button class="btn btn-danger px-4 shadow-none rounded-0" type="button" id="search-button">Search</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- show the all the meals -->
+    <section class="py-3">
+      <article class="container">
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-3" id="display-meals">
+
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <!-- Button trigger modal -->
+      <button type="button" hidden id="open-modal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#meal-details-popup">
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="meal-details-popup" tabindex="-1" aria-labelledby="meal-details-popupLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="meal-details">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger rounded-0 shadow-none" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="loader">
+      <div class="d-flex justify-content-center h-100 align-items-center">
+        <div class="spinner-border text-white" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  <script src="./js/meal.js"></script>
+</body>
+</html>
